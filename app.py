@@ -115,11 +115,12 @@ st.markdown(
         <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 1.05rem;">
             <div>📧 <a href="mailto:jayshah596@gmail.com" style="color: #ffffff; text-decoration: underline;">jayshah596@gmail.com</a></div>
             <div>📞 <a href="tel:+447435996857" style="color: #ffffff; text-decoration: underline;">+44 7435 996857</a></div>
-            <div>💼 <a href="https://www.linkedin.com/in/jay-shah" target="_blank" style="color: #ffffff; text-decoration: underline;">LinkedIn: Jay Shah</a></div>
+            <div>💼 <a href="https://www.linkedin.com/in/jay-shah-climate/" target="_blank" style="color: #ffffff; text-decoration: underline;">LinkedIn: Jay Shah</a></div>
         </div>
         <div style="margin-top: 1.5rem; font-weight: 600; font-size: 1.1rem;">Developed by Jay Shah</div>
     </div>
     """,
     unsafe_allow_html=True,
 )
+
 
