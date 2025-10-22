@@ -100,7 +100,26 @@ with col2:
 
 # Data table
 st.header("📋 Filtered CSRD Report Data")
-st.dataframe(filtered_df, use_container_width=True)
+
+# Prepare a display-friendly version of the filtered data
+display_df = filtered_df.copy()
+
+# Format publication date without time information
+if "Publication date" in display_df.columns:
+    if pd.api.types.is_datetime64_any_dtype(display_df["Publication date"]):
+        display_df["Publication date"] = display_df["Publication date"].dt.strftime("%Y-%m-%d")
+    display_df["Publication date"] = display_df["Publication date"].fillna("")
+
+# Convert report links into clickable hyperlinks using the company name as the anchor text
+if {"Report Link", "Company"}.issubset(display_df.columns):
+    link_mask = display_df["Report Link"].notna() & display_df["Company"].notna()
+    display_df.loc[link_mask, "Report Link"] = display_df.loc[link_mask].apply(
+        lambda row: f'<a href="{row["Report Link"]}" target="_blank">{row["Company"]}</a>',
+        axis=1,
+    )
+    display_df.loc[~link_mask, "Report Link"] = display_df.loc[~link_mask, "Report Link"].fillna("")
+
+st.markdown(display_df.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 # --- Contact & credits section ---
 st.markdown("---")
@@ -122,5 +141,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
