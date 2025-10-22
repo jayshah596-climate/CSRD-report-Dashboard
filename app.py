@@ -101,3 +101,25 @@ with col2:
 # Data table
 st.header("📋 Filtered CSRD Report Data")
 st.dataframe(filtered_df, use_container_width=True)
+
+# --- Contact & credits section ---
+st.markdown("---")
+st.markdown(
+    """
+    <div style="background: linear-gradient(135deg, #0f4c81, #1cb5e0); border-radius: 16px; padding: 2rem; color: white;">
+        <h2 style="margin-bottom: 0.5rem;">🤝 Let's Build Impactful ESG Solutions Together</h2>
+        <p style="font-size: 1.05rem; line-height: 1.6;">
+            Please connect if you would like to develop a similar dashboard or need support with ESG reporting,
+            Climate Risk Assessments, or Net Zero strategy aligned with international standards and frameworks.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 1.05rem;">
+            <div>📧 <a href="mailto:jayshah596@gmail.com" style="color: #ffffff; text-decoration: underline;">jayshah596@gmail.com</a></div>
+            <div>📞 <a href="tel:+447435996857" style="color: #ffffff; text-decoration: underline;">+44 7435 996857</a></div>
+            <div>💼 <a href="https://www.linkedin.com/in/jay-shah" target="_blank" style="color: #ffffff; text-decoration: underline;">LinkedIn: Jay Shah</a></div>
+        </div>
+        <div style="margin-top: 1.5rem; font-weight: 600; font-size: 1.1rem;">Developed by Jay Shah</div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
