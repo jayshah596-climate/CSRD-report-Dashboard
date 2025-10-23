@@ -118,7 +118,7 @@ if report_link_column and company_column:
         display_df[report_link_column].notna()
         & (display_df[report_link_column].astype(str).str.strip() != "")
         & display_df[company_column].notna()
-    )␊
+    )
 
     def _make_link(row):
         return (
@@ -155,6 +155,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
