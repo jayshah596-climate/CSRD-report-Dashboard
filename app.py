@@ -74,7 +74,15 @@ if len(date_range) == 2:
     ]
 
 # --- Main content ---
-st.title("🌍 Global CSRD Reports Dashboard")
+st.markdown(
+    f"""
+    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <img src="{EU_LOGO_URL}" alt="European Union logo" width="48" height="48" style="flex-shrink: 0;" />
+        <h1 style="font-size: 2rem; font-weight: 700; margin: 0;">Global CSRD Reports Dashboard</h1>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 # Charts in columns
 st.subheader("📊 CSRD Reports by Country")
@@ -148,6 +156,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
