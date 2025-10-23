@@ -113,12 +113,12 @@ company_column = next(
     None,
 )
 
-if report_link_column and company_column:
-    link_mask = (
-        display_df[report_link_column].notna()
-        & (display_df[report_link_column].astype(str).str.strip() != "")
-        & display_df[company_column].notna()
-    )
+if report_link_column and company_column:␊
+    link_mask = (␊
+        display_df[report_link_column].notna()␊
+        & (display_df[report_link_column].astype(str).str.strip() != "")␊
+        & display_df[company_column].notna()␊
+    )␊
 
     def _make_link(row):
         return (
@@ -134,7 +134,21 @@ if report_link_column and company_column:
         display_df.loc[~link_mask, report_link_column].fillna("")
     )
 
-st.markdown(display_df.to_html(escape=False, index=False), unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+        .csrd-table thead th {
+            text-align: center !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    display_df.to_html(escape=False, index=False, classes="csrd-table"),
+    unsafe_allow_html=True,
+)
 
 # --- Contact & credits section ---
 st.markdown("---")
@@ -156,6 +170,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
