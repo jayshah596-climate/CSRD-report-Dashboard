@@ -93,13 +93,35 @@ if "Publication date" in display_df.columns:
     display_df["Publication date"] = display_df["Publication date"].fillna("")
 
 # Convert report links into clickable hyperlinks using the company name as the anchor text
-if {"Report Link", "Company"}.issubset(display_df.columns):
-    link_mask = display_df["Report Link"].notna() & display_df["Company"].notna()
-    display_df.loc[link_mask, "Report Link"] = display_df.loc[link_mask].apply(
-        lambda row: f'<a href="{row["Report Link"]}" target="_blank">{row["Company"]}</a>',
+report_link_column = next(
+    (col for col in display_df.columns if col.strip().lower() == "report link"),
+    None,
+)
+company_column = next(
+    (col for col in display_df.columns if col.strip().lower() == "company"),
+    None,
+)
+
+if report_link_column and company_column:
+    link_mask = (
+        display_df[report_link_column].notna()
+        & (display_df[report_link_column].astype(str).str.strip() != "")
+        & display_df[company_column].notna()
+    )
+
+    def _make_link(row):
+        return (
+            f'<a href="{row[report_link_column]}" target="_blank">'
+            f"{row[company_column]}</a>"
+        )
+
+    display_df.loc[link_mask, report_link_column] = display_df.loc[link_mask].apply(
+        _make_link,
         axis=1,
     )
-    display_df.loc[~link_mask, "Report Link"] = display_df.loc[~link_mask, "Report Link"].fillna("")
+    display_df.loc[~link_mask, report_link_column] = (
+        display_df.loc[~link_mask, report_link_column].fillna("")
+    )
 
 st.markdown(display_df.to_html(escape=False, index=False), unsafe_allow_html=True)
 
@@ -123,6 +145,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
