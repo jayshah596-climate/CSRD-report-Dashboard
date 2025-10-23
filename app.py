@@ -5,9 +5,12 @@ from datetime import datetime
 
 # --- Page config ---
 st.set_page_config(
-    page_title="🌍 Global CSRD Reports Dashboard",
+    page_title="Global CSRD Reports Dashboard",
     layout="wide"
 )
+
+EU_LOGO_URL = "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+
 
 # --- Load Excel and clean headers ---
 @st.cache_data
@@ -145,6 +148,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
