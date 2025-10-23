@@ -74,21 +74,11 @@ if len(date_range) == 2:
 st.title("🌍 Global CSRD Reports Dashboard")
 
 # Charts in columns
-col1, col2 = st.columns(2)
+st.subheader("📊 CSRD Reports by Country")
+country_data = filtered_df.groupby("Country", as_index=False)["Company"].count()
+fig1 = px.bar(country_data, x="Country", y="Company", color="Country")
+st.plotly_chart(fig1, use_container_width=True)
 
-with col1:
-    # Country bar chart
-    country_counts = filtered_df.groupby("Country")["Company"].count().reset_index()
-    fig1 = px.bar(
-        country_counts,
-        x="Country",
-        y="Company",
-        title="Number of CSRD Reports by Country",
-        color="Country"
-    )
-    fig1.update_layout(showlegend=False)
-    st.plotly_chart(fig1, use_container_width=True)
-    st.plotly_chart(fig2, use_container_width=True)
 
 # Data table
 st.header("📋 Filtered CSRD Report Data")
@@ -133,6 +123,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
