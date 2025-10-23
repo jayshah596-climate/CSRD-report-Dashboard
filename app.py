@@ -85,7 +85,7 @@ st.markdown(
 )
 
 # Charts in columns
-st.subheader("📊 CSRD Reports by Country")
+st.subheader("🌍 CSRD Reports by Country")
 country_data = filtered_df.groupby("Country", as_index=False)["Company"].count()
 fig1 = px.bar(country_data, x="Country", y="Company", color="Country")
 st.plotly_chart(fig1, use_container_width=True)
@@ -156,6 +156,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
