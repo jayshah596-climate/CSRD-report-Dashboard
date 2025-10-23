@@ -113,11 +113,11 @@ company_column = next(
     None,
 )
 
-if report_link_column and company_column:␊
-    link_mask = (␊
-        display_df[report_link_column].notna()␊
-        & (display_df[report_link_column].astype(str).str.strip() != "")␊
-        & display_df[company_column].notna()␊
+if report_link_column and company_column:U+240A
+    link_mask = (U+240A
+        display_df[report_link_column].notna()U+240A
+        & (display_df[report_link_column].astype(str).str.strip() != "")U+240A
+        & display_df[company_column].notna()U+240A
     )␊
 
     def _make_link(row):
@@ -170,6 +170,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
