@@ -93,8 +93,8 @@ with col2:
     # Industry pie chart
     fig2 = px.pie(
         filtered_df,
-        names="SASB industry (SICS® Industries)",
-        title="Distribution of Reports by Industry"
+        names="SASB industry (SICS® Industries)"
+        
     )
     st.plotly_chart(fig2, use_container_width=True)
 
@@ -141,3 +141,4 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
