@@ -88,8 +88,6 @@ with col1:
     )
     fig1.update_layout(showlegend=False)
     st.plotly_chart(fig1, use_container_width=True)
-       
-    )
     st.plotly_chart(fig2, use_container_width=True)
 
 # Data table
@@ -135,5 +133,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
