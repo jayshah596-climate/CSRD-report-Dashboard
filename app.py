@@ -133,6 +133,21 @@ if report_link_column and company_column:
     display_df.loc[~link_mask, report_link_column] = (
         display_df.loc[~link_mask, report_link_column].fillna("")
     )
+st.markdown(
+    """
+    <style>
+        .csrd-table thead th {
+            text-align: center !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    display_df.to_html(escape=False, index=False, classes="csrd-table"),
+    unsafe_allow_html=True,
+)
 
 
 # --- Contact & credits section ---
@@ -155,6 +170,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 
 
